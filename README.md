@@ -45,7 +45,7 @@
 
 ## 🛠️ 技术架构
 
-![系统架构图](https://github.com/PangBoJason/ai-health-assistant/blob/main/images/baselinepicture.png)
+![系统架构图](https://github.com/PangBoJason/ai-health-assistant/blob/main/images/architect.png)
 
 ### 技术栈
 - **前端**: Streamlit + Plotly + CSS
