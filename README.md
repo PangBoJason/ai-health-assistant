@@ -1,33 +1,63 @@
-# 智能健康助手
+# 智能健康助手 🏥🤖
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
+[![LangChain](https://img.shields.io/badge/LangChain-0.1+-green.svg)](https://python.langchain.com/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-orange.svg)](https://openai.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 一个融合AI健身教练和健康监督功能的综合健康管理助手，基于多代理系统架构。
 
 ## ✨ 功能特性
 
-### 🏋️ 健身教练
+### 🏋️ 健身教练模块
 - 个性化运动计划制定
 - 根据目标和身体状况调整
 - 支持减重、增肌、耐力等多种目标
 - 安全性指导和注意事项
+- **SMART目标管理**: 具体、可测量的健身目标设定
 
-### 🍎 营养师
+### 🍎 营养师模块
 - 个性化饮食计划
 - 营养原则指导
 - 考虑饮食偏好和限制
 - 每日餐食建议
+- **营养跟踪**: 卡路里和营养素摄入记录
 
-### 🧘 心理健康顾问
+### 🧘 心理健康顾问模块
 - 压力管理技巧
 - 冥想和放松指导
 - 心理健康建议
 - 生活方式优化
+- **情绪跟踪**: 每日心情和压力水平记录
+
+### 📊 数据可视化模块
+- **健康趋势分析**: 体重、运动频率、心情变化图表
+- **进度跟踪**: 目标完成情况可视化
+- **统计报告**: 周/月健康数据汇总
+- **交互式图表**: 基于Plotly的动态数据展示
+
+### 🎯 目标管理模块
+- **SMART目标设定**: 具体、可测量、可达成的目标
+- **进度跟踪**: 实时目标完成情况
+- **成就系统**: 目标达成奖励和激励
+- **目标模板**: 预设的常见健康目标
 
 ## 🛠️ 技术架构
 
-- **框架**: LangGraph + LangChain
-- **AI模型**: GPT-4o (通过ChatAnywhere API)
-- **前端**: Streamlit
-- **语言**: Python 3.8+
+![系统架构图](images/baselinepicture.png)
+
+### 技术栈
+- **前端**: Streamlit + Plotly + CSS
+- **AI框架**: LangChain + LangGraph + OpenAI GPT-4o
+- **后端**: Python + SQLAlchemy + Pandas
+- **数据库**: SQLite
+
+### 系统组件
+- **多代理系统**: 健身助手、营养师、心理健康顾问、监督代理
+- **业务逻辑**: 数据可视化、目标管理、数据处理、分析模块
+- **用户界面**: 仪表板、聊天界面、目标管理、用户配置
+- **数据持久化**: 用户配置、健康记录、目标跟踪
 
 ## 📦 安装步骤
 
@@ -60,10 +90,18 @@ OPENAI_API_KEY=your_openai_api_key
 OPENAI_API_BASE=https://api.chatanywhere.org/v1
 ```
 
-### 5. 运行应用
+### 5. 验证安装
+```bash
+# 验证依赖是否正确安装
+python -c "import streamlit, langchain, langchain_openai; print('✅ 所有依赖安装成功！')"
+```
+
+### 6. 运行应用
 ```bash
 streamlit run main.py
 ```
+
+应用将在浏览器中自动打开 `http://localhost:8501`
 
 ## 🎯 使用方法
 
@@ -119,13 +157,31 @@ llm = ChatOpenAI(
 
 ```
 smart-health-assistant/
-├── main.py              # 主应用入口
-├── agents.py            # 多代理系统
-├── tools.py             # 工具函数和数据
-├── requirements.txt     # 依赖包
-├── .env                 # 环境变量
-└── README.md           # 项目说明
+├── main.py                    # 🚀 主应用入口 (Streamlit多页面应用)
+├── agents.py                  # 🤖 多代理系统 (健身/营养/心理健康助手)
+├── tools.py                   # 🛠️ 工具函数和数据处理
+├── core/
+│   └── database.py            # 💾 数据持久化 (SQLAlchemy + SQLite)
+├── modules/
+│   ├── visualization.py       # 📊 数据可视化 (Plotly图表)
+│   ├── dashboard.py           # 📋 仪表板界面
+│   └── goals.py              # 🎯 目标管理系统
+├── images/                    # 🖼️ 文档图片资源
+│   └── architecture.png       # 系统架构图
+├── requirements.txt           # 📦 依赖包清单
+├── .env                       # 🔐 环境变量配置
+├── .gitignore                # 🚫 Git忽略文件
+└── README.md                 # 📖 项目说明文档
 ```
+
+### 核心模块说明
+
+- **`main.py`**: Streamlit多页面应用的主入口，集成所有功能模块
+- **`agents.py`**: 基于LangGraph的多代理系统，包含专业健康助手
+- **`core/database.py`**: 完整的数据持久化解决方案，支持用户配置、健康记录、目标跟踪
+- **`modules/visualization.py`**: 基于Plotly的交互式数据可视化
+- **`modules/dashboard.py`**: 健康数据概览和快速操作界面
+- **`modules/goals.py`**: SMART目标管理系统，支持目标设定、跟踪和成就
 
 ## ⚠️ 注意事项
 
